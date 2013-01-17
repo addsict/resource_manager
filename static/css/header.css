@@ -1,4 +1,4 @@
-.navbar-item {
-    font-size: 15px;
-    margin: 0px 0px 0px 10px;
+.page-header {
+    padding: 0px 0px 0px 30px;
+    border-bottom: 3px solid #467138;
 }

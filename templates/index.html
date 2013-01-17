@@ -1,16 +1,92 @@
 {% extends "header.html" %}
 {% block contents %}
 <link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/smoothness/jquery-ui-1.9.2.custom.css" />
+<script type="text/javascript" src="js/jquery-ui.js"></script>
 
 <div class="row">
-  <div class="span4 well">
-      <div class="resource-kind">Boards</div>
+  <div class="span3">
+      <div class="resource-category" id="board">
+          <h3 class="category-name">Boards</h3>
+          <ul id="board_list"></ul>
+      </div>
   </div>
-  <div class="span4 well">
-      <div class="resource-kind">Measurement Tools</div>
+  <div class="span3">
+      <div class="resource-category" id="measurement_tool">
+          <h3 class="category-name">Tools</h3>
+          <ul id="measurement_tool_list"></ul>
+      </div>
   </div>
-  <div class="span4 well">
-      <div class="resource-kind">Laptop</div>
+  <div class="span3">
+      <div class="resource-category" id="pc">
+          <h3 class="category-name">PC</h3>
+          <ul id="pc_list"></ul>
+      </div>
+  </div>
+  <div class="span3">
+      <div class="resource-category" id="others">
+          <h3 class="category-name">Others</h3>
+          <ul id="others_list"></ul>
+      </div>
   </div>
 </div>
+
+
+<div id="resource_dialog"></div>
+<script type="text/html" id="dialog_template">
+<div id="resource_dialog_inner" title="Resource 詳細">
+    <form>
+        <fieldset>
+            <label for="name">名称:</label>
+            <div class="label-value"><%= name %></div>
+            <label for="category">カテゴリ:</label>
+            <div class="label-value"><%= category %></div>
+            <label for="detail">詳細:</label>
+            <div class="label-value">
+                <% if (detail) { %>
+                    <%= detail %>
+                <% } else { %>
+                    なし
+                <% } %>
+            </div>
+            <label for="user">使用者:</label>
+            <input type="text" name="user" id="user" class="text ui-widget-content ui-corner-all" 
+                value="<%= user %>"
+            />
+            <label for="room_used">使用場所:</label>
+            <input type="text" name="user" id="room_used" class="text ui-widget-content ui-corner-all"
+                value="<%= room_used %>"
+            />
+            <label for="using_date">使用時間:</label>
+            <input type="text" name="using_date" id="using_date" class="text ui-widget-content ui-corner-all"
+                value="<%= using_date %>"
+            />
+        </fieldset>
+    </form>
+</div>
+</script>
+
+<script type="text/html" id="resource_template">
+<a href="#<%= id %>" class="resource-link">
+    <div class="span3 well test">
+        <% if (is_used) { %>
+            <span class="label label-important">使用中</span>
+        <% } else { %>
+            <span class="label label-success">使用可能</span>
+        <% } %>
+        <span class="resource-name"><%= name %></span>
+    </div>
+</a>
+</script>
+
+<script type="text/javascript" src="js/models/resource.js"></script>
+<script type="text/javascript" src="js/models/resources.js"></script>
+<script type="text/javascript" src="js/views/appview.js"></script>
+<script type="text/javascript" src="js/views/resourceview.js"></script>
+<script>
+    var resources = new Resources();
+    var appview = new AppView({
+        collection: resources
+    });
+</script>
 {% endblock %}

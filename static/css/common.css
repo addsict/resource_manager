@@ -1,9 +1,39 @@
 #contents {
-    margin: 80px 0px 0px 30px;
-    width: 1200px;
+    margin: 20px 0px 0px 0px;
+    width: 1400px;
 }
 
-.resource-kind {
-    font-size: 25px;
+.category-name {
+    color: #555;
+    margin: 0px 0px 0px 45px;
+}
+
+.resource-link {
+    color: #444;
+}
+
+li {
+    list-style-type: none;
+}
+
+#resource_dialog_inner label {
+    color: #666;
     font-weight: bold;
+}
+
+.test {
+    width: 170px;
+}
+
+#resource_dialog_inner .label-value {
+    margin: 0px 0px 15px 20px;
+}
+
+#is_used {
+    margin: 0px 0px 15px 20px;
+    width: 20px;
+}
+
+#resource_dialog_inner input[type='text'] {
+    margin: 0px 0px 15px 20px;
 }

@@ -1,0 +1,26 @@
+{% extends "header.html" %}
+{% block contents %}
+<link rel="stylesheet" type="text/css" href="css/admin.css" />
+
+<div class="span5 well">
+    <h3>新規追加</h3>
+    <fieldset>
+        <form method="post" action="/api/resources">
+            <label for="name">名称:</label>
+            <input type="text" name="name"/>
+            <label for="category">カテゴリ:</label>
+            <select name="category">
+                <option value="board">ボード</option>
+                <option value="measurement_tool">計測機器</option>
+                <option value="pc">パソコン</option>
+                <option value="others">その他</option>
+            </select>
+            <label for="detail">詳細:</label>
+            <input type="text" name="detail"/>
+            <label for="room_returned">返却場所:</label>
+            <input type="text" name="room_returned"/>
+            <div><input type="submit" value="追加"/></div>
+        </form>
+    </fieldset>
+</div>
+{% endblock %}
